@@ -12,20 +12,20 @@ import imageviewer.model.RealImage;
 import imageviewer.ui.console.SwingImageViewerPanel;
 import java.awt.event.ActionListener;
 
-public class Application {
+public class SwingApplication {
 
     public static void main(String[] args) {
-        new Application().execute();
+        new SwingApplication().execute();
     }
 
     private void execute() {
         Image[] images = linkImages(createImages()); 
         ImageViewer viewer = createImageViewer(images[0]);
-        createApplicationFrame(createCommands(viewer));
+        createApplicationFrame(createCommands(viewer), (SwingImageViewerPanel) viewer);
     }
 
     private Image[] createImages() {
-        Image[] images = new Image[4];
+        Image[] images = new Image[6];
         for (int i = 0; i < images.length; i++) {
             images[i] = createImage(i);
         }
@@ -34,7 +34,7 @@ public class Application {
 
     private Image createImage(final int index) {
         final String ROOT = "images/";
-        final String[] images = {"jellyfish.jpg", "koala.jpg", "casa1.jpg", "casa2.jpg"};
+        final String[] images = {"monster.jpg", "koala.jpg", "jellyfish.jpg", "evolution.jpg", "water.jpg", "skelleton.jpg"};
         return new ProxyImage(new ImageLoader() {
             @Override
             public Image load() {
@@ -55,13 +55,13 @@ public class Application {
     }
 
     private ImageViewer createImageViewer(Image image) {
-        ImageViewer viewer = new SwingImageViewerPanel();
+        SwingImageViewerPanel viewer = new SwingImageViewerPanel();
         viewer.setImage(image);
         return viewer;
     }
 
-    private ApplicationFrame createApplicationFrame(ActionListener[] listeners) {
-        return new ApplicationFrame(listeners);
+    private ApplicationFrame createApplicationFrame(ActionListener[] listeners, SwingImageViewerPanel viewer) {
+        return new ApplicationFrame(listeners, viewer);
     }
 
     private ActionListener[] createCommands(ImageViewer viewer) {
