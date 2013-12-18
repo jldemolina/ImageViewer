@@ -1,6 +1,6 @@
 package imageviewer.controller;
 
-import imageviewer.ui.swing.ImageViewer;
+import imageviewer.ui.ImageViewer;
 import java.awt.event.ActionEvent;
 
 public class PrevImageCommand implements Command {

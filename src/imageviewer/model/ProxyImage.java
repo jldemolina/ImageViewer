@@ -14,9 +14,9 @@ public class ProxyImage extends Image {
     }
 
     @Override
-    public Dimension getDimension() {
+    public Bitmap getBitmap() {
         checkLoaded();
-        return realImage.getDimension();
+        return realImage.getBitmap();
     }
     
     private void checkLoaded() {

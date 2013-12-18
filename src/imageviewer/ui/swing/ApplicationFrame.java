@@ -1,5 +1,7 @@
 package imageviewer.ui.swing;
 
+import imageviewer.ui.ImageViewer;
+import imageviewer.ui.console.SwingImageViewerPanel;
 import java.awt.FlowLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionListener;
@@ -21,7 +23,7 @@ public class ApplicationFrame extends JFrame {
         this.setVisible(true);
     }
 
-    private void createComponents() {
+    private void createComponents() {        
         this.add(createButton("Prev"));
         this.add(createButton("Next"));
     }

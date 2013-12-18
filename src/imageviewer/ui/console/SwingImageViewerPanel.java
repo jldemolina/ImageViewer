@@ -2,8 +2,9 @@ package imageviewer.ui.console;
 
 import imageviewer.ui.ImageViewer;
 import imageviewer.model.Image;
+import javax.swing.JPanel;
 
-public class ConsoleImageViewer implements ImageViewer {
+public class SwingImageViewerPanel extends JPanel implements ImageViewer {
 
     private Image image;
 
@@ -23,4 +24,5 @@ public class ConsoleImageViewer implements ImageViewer {
         System.out.print(getImage().getBitmap().getByteArray().length);
     }
 
+ 
 }

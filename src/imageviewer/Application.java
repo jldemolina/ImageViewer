@@ -1,15 +1,15 @@
 package imageviewer;
 
-import imageviewer.ui.console.ConsoleImageViewer;
-import imageviewer.model.Dimension;
 import imageviewer.model.Image;
-import imageviewer.ui.swing.ImageViewer;
+import imageviewer.ui.ImageViewer;
 import imageviewer.persistence.ImageLoader;
 import imageviewer.ui.swing.ApplicationFrame;
 import imageviewer.controller.NextImageCommand;
 import imageviewer.controller.PrevImageCommand;
+import imageviewer.model.Bitmap;
 import imageviewer.model.ProxyImage;
 import imageviewer.model.RealImage;
+import imageviewer.ui.console.SwingImageViewerPanel;
 import java.awt.event.ActionListener;
 
 public class Application {
@@ -25,7 +25,7 @@ public class Application {
     }
 
     private Image[] createImages() {
-        Image[] images = new Image[5];
+        Image[] images = new Image[4];
         for (int i = 0; i < images.length; i++) {
             images[i] = createImage(i);
         }
@@ -33,11 +33,12 @@ public class Application {
     }
 
     private Image createImage(final int index) {
-        final int[] sizes = new int[] {200, 500, 400, 398, 100};
+        final String ROOT = "images/";
+        final String[] images = {"jellyfish.jpg", "koala.jpg", "casa1.jpg", "casa2.jpg"};
         return new ProxyImage(new ImageLoader() {
             @Override
             public Image load() {
-                return new RealImage(new Dimension(sizes[index], sizes[index]));
+                return new RealImage(new Bitmap(ROOT + images[index]));
             }
         });
     }
@@ -54,7 +55,7 @@ public class Application {
     }
 
     private ImageViewer createImageViewer(Image image) {
-        ImageViewer viewer = new ConsoleImageViewer();
+        ImageViewer viewer = new SwingImageViewerPanel();
         viewer.setImage(image);
         return viewer;
     }

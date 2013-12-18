@@ -2,15 +2,15 @@ package imageviewer.model;
 
 public class RealImage extends Image {
     
-    private final Dimension dimension;
+    private final Bitmap bitmap;
 
-    public RealImage(Dimension dimension) {
-        this.dimension = dimension;
+    public RealImage(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
     
     @Override
-    public Dimension getDimension() {
-        return dimension;
+    public Bitmap getBitmap() {
+        return bitmap;
     }
 
     @Override

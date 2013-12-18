@@ -1,8 +1,9 @@
 package imageviewer.model;
 
 public abstract class Image {
+        
+    public abstract Bitmap getBitmap();
     
-    public abstract Dimension getDimension();
     public abstract Image getNext();
     public abstract Image getPrev();
     
