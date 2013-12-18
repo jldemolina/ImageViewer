@@ -1,25 +1,23 @@
-package imageviewer;
+package imageviewer.controller;
 
+import imageviewer.ui.swing.ImageViewer;
 import java.awt.event.ActionEvent;
 
-public class NextImageCommand implements Command {
+public class PrevImageCommand implements Command {
     
     private final ImageViewer viewer;
 
-    public NextImageCommand(ImageViewer viewer) {
+    public PrevImageCommand(ImageViewer viewer) {
         this.viewer = viewer;
     }
 
     @Override
     public void execute() {
-        this.viewer.setImage(this.viewer.getImage().getNext());
+        this.viewer.setImage(this.viewer.getImage().getPrev());
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         execute();
     }
-    
-    
-
 }

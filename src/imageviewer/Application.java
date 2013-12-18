@@ -1,11 +1,21 @@
 package imageviewer;
 
+import imageviewer.ui.console.ConsoleImageViewer;
+import imageviewer.model.Dimension;
+import imageviewer.model.Image;
+import imageviewer.ui.swing.ImageViewer;
+import imageviewer.persistence.ImageLoader;
+import imageviewer.ui.swing.ApplicationFrame;
+import imageviewer.controller.NextImageCommand;
+import imageviewer.controller.PrevImageCommand;
+import imageviewer.model.ProxyImage;
+import imageviewer.model.RealImage;
 import java.awt.event.ActionListener;
 
-public class Main {
+public class Application {
 
     public static void main(String[] args) {
-        new Main().execute();
+        new Application().execute();
     }
 
     private void execute() {

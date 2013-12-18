@@ -1,4 +1,6 @@
-package imageviewer;
+package imageviewer.ui.swing;
+
+import imageviewer.model.Image;
 
 public abstract class ImageViewer {
     

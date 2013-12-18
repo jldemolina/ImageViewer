@@ -1,4 +1,4 @@
-package imageviewer;
+package imageviewer.model;
 
 public abstract class Image {
     

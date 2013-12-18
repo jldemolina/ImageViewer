@@ -1,4 +1,6 @@
-package imageviewer;
+package imageviewer.ui.console;
+
+import imageviewer.ui.swing.ImageViewer;
 
 public class ConsoleImageViewer extends ImageViewer {
     

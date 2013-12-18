@@ -1,9 +1,7 @@
-package imageviewer;
+package imageviewer.ui.swing;
 
 import java.awt.FlowLayout;
 import java.awt.HeadlessException;
-import java.awt.PopupMenu;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;

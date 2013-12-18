@@ -1,4 +1,4 @@
-package imageviewer;
+package imageviewer.model;
 
 public class RealImage extends Image {
     
