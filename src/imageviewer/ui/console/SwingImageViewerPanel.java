@@ -3,11 +3,14 @@ package imageviewer.ui.console;
 import imageviewer.ui.ImageViewer;
 import imageviewer.model.Image;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.image.BufferedImage;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
@@ -15,24 +18,28 @@ public class SwingImageViewerPanel extends JPanel implements ImageViewer {
 
     private Image image;
     private int offset;
-    
+    private int initialX;
+
+    private BufferedImage currentBurrefedImage;
+    private BufferedImage nextBurrefedImage;
+    private BufferedImage prevBurrefedImage;
+
     public SwingImageViewerPanel() {
         super();
+        this.hookEvents();
     }
-    
+
     @Override
     public void paint(Graphics graphics) {
-        try {
-            if (image == null) {
-                return;
-            }
-            graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
-            graphics.drawImage(ImageIO.read(new ByteArrayInputStream(image.getBitmap().getByteArray())), offset, 0, null);
-        } catch (IOException ex) {
-            Logger.getLogger(SwingImageViewerPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        if (image == null) return;
+        linkBufferedImages();
+        graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
+        graphics.drawImage(currentBurrefedImage, offset, 0, null);
+        if (offset == 0) return;
+        if (offset < 0) graphics.drawImage(nextBurrefedImage, currentBurrefedImage.getWidth() + offset, 0, null);
+        else graphics.drawImage(prevBurrefedImage, offset - currentBurrefedImage.getWidth(), 0, null);
     }
-    
+
     @Override
     public Image getImage() {
         return image;
@@ -47,9 +54,68 @@ public class SwingImageViewerPanel extends JPanel implements ImageViewer {
     @Override
     public void refresh() {
         repaint();
-        System.out.println("This image is: " + getImage().getBitmap().getByteArray().length);
-        System.out.println("The  prev image is: " + getImage().getPrev().getBitmap().getByteArray().length);
-        System.out.println("The  next image is: " + getImage().getNext().getBitmap().getByteArray().length);
     }
 
+    private void hookEvents() {
+        this.hookMouseListener();
+        this.hookMouseMotionListener();
+    }
+
+    private void hookMouseListener() {
+        this.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent me) {
+            }
+
+            @Override
+            public void mousePressed(MouseEvent me) {
+                initialX = me.getX();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent me) {
+                System.out.println("released" + me.getX());
+                if (offset > currentBurrefedImage.getWidth() / 2)
+                    image = image.getPrev();
+                if (offset < -currentBurrefedImage.getWidth() / 2)
+                    image = image.getNext();
+                offset = 0;
+                repaint();
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent me) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent me) {
+            }
+        });
+    }
+
+    private void hookMouseMotionListener() {
+        this.addMouseMotionListener(new MouseMotionListener() {
+
+            @Override
+            public void mouseDragged(MouseEvent me) {
+                offset = me.getX() - initialX;
+                repaint();
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent me) {
+            }
+        });
+    }
+
+    private void linkBufferedImages() {
+        try {
+            this.currentBurrefedImage = ImageIO.read(new ByteArrayInputStream(image.getBitmap().getByteArray()));
+            this.nextBurrefedImage = ImageIO.read((new ByteArrayInputStream(image.getNext().getBitmap().getByteArray())));
+            this.prevBurrefedImage = ImageIO.read((new ByteArrayInputStream(image.getPrev().getBitmap().getByteArray())));
+        } catch (IOException ex) {
+            System.out.println(System.getProperty("user.dir") + File.separator + "/images/casa2.jpg");
+        }
+    }
 }
