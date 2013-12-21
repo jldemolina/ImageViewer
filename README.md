@@ -36,4 +36,6 @@ Este patrón suele establecer en escenarios donde se necesite encapsular una pet
 <b>Singleton:</b> La idea del patrón Singleton es proveer un mecanismo para limitar el número de instancias de una clase. Por lo tanto el mismo objeto es siempre compartido por distintas partes del código. Puede ser visto como una solución más elegante para una variable global porque los datos son abstraídos por detrás de la interfaz que publica la clase singleton.
 Dicho de otra manera, esta patrón busca garantizar que una clase sólo tenga una instancia y proporcionar un punto de acceso global a ella.
 
+<b>Proxy:</b> El patrón Proxy se utiliza como intermediario para acceder a un objeto, permitiendo controlar el acceso a él. Para ello obliga que las llamadas a un objeto ocurran indirectamente a través de un objeto proxy, que actúa como un sustituto del objeto original, delegando luego las llamadas a los métodos de los objetos respectivos.
+
 <b>Con lo nombrado anteriormente, se ha conseguido la completa cohesión y el inestimable acoplamiento del producto final.</b>
