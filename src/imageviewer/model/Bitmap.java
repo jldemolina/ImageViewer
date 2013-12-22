@@ -1,12 +1,8 @@
 package imageviewer.model;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
+import java.nio.file.Files;
 
 public class Bitmap {
 
@@ -24,20 +20,9 @@ public class Bitmap {
 
     private byte[] extractFromFile() {
         try {
-            File fnew = new File(file);
-            BufferedImage originalImage = ImageIO.read(fnew);
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(originalImage, "jpg", baos);
-            
-            return baos.toByteArray();
+            return Files.readAllBytes(new File(file).toPath());
         } catch (IOException ex) {
-            Logger.getLogger(Bitmap.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-        
-        // File fi = new File("myfile.jpg");
-        // byte[] fileContent = Files.readAllBytes(fi.toPath())
-
     }
-
 }

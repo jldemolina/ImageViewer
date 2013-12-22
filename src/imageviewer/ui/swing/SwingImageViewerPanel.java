@@ -1,18 +1,17 @@
-package imageviewer.ui.console;
+package imageviewer.ui.swing;
 
-import imageviewer.ui.ImageViewer;
 import imageviewer.model.Image;
-import java.awt.Graphics;
+import imageviewer.ui.ImageViewer;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
-
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
 
 public class SwingImageViewerPanel extends JPanel implements ImageViewer {
 
@@ -115,7 +114,6 @@ public class SwingImageViewerPanel extends JPanel implements ImageViewer {
             this.nextBurrefedImage = ImageIO.read((new ByteArrayInputStream(image.getNext().getBitmap().getByteArray())));
             this.prevBurrefedImage = ImageIO.read((new ByteArrayInputStream(image.getPrev().getBitmap().getByteArray())));
         } catch (IOException ex) {
-            System.out.println(System.getProperty("user.dir") + File.separator + "/images/casa2.jpg");
         }
     }
 }

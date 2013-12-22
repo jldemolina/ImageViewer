@@ -9,7 +9,7 @@ import imageviewer.controller.PrevImageCommand;
 import imageviewer.model.Bitmap;
 import imageviewer.model.ProxyImage;
 import imageviewer.model.RealImage;
-import imageviewer.ui.console.SwingImageViewerPanel;
+import imageviewer.ui.swing.SwingImageViewerPanel;
 import java.awt.event.ActionListener;
 
 public class SwingApplication {
