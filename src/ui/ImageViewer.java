@@ -1,6 +1,6 @@
-package imageviewer.ui;
+package ui;
 
-import imageviewer.model.Image;
+import model.Image;
 
 public interface ImageViewer {
     

@@ -1,6 +1,6 @@
-package imageviewer.model;
+package model;
 
-import imageviewer.persistence.ImageLoader;
+import persistence.ImageLoader;
 
 public class ProxyImage extends Image {
     

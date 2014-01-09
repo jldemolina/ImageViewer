@@ -1,15 +1,15 @@
 package imageviewer;
 
-import imageviewer.model.Image;
-import imageviewer.ui.ImageViewer;
-import imageviewer.persistence.ImageLoader;
-import imageviewer.ui.swing.ApplicationFrame;
-import imageviewer.controller.NextImageCommand;
-import imageviewer.controller.PrevImageCommand;
-import imageviewer.model.Bitmap;
-import imageviewer.model.ProxyImage;
-import imageviewer.model.RealImage;
-import imageviewer.ui.swing.SwingImageViewerPanel;
+import model.Image;
+import ui.ImageViewer;
+import persistence.ImageLoader;
+import ui.swing.ApplicationFrame;
+import controller.NextImageCommand;
+import controller.PrevImageCommand;
+import model.Bitmap;
+import model.ProxyImage;
+import model.RealImage;
+import ui.swing.SwingImageViewerPanel;
 import java.awt.event.ActionListener;
 
 public class SwingApplication {
@@ -26,9 +26,7 @@ public class SwingApplication {
 
     private Image[] createImages() {
         Image[] images = new Image[6];
-        for (int i = 0; i < images.length; i++) {
-            images[i] = createImage(i);
-        }
+        for (int i = 0; i < images.length; i++) images[i] = createImage(i);
         return images;
     }
 

@@ -1,7 +1,7 @@
-package imageviewer.ui.console;
+package ui.console;
 
-import imageviewer.ui.ImageViewer;
-import imageviewer.model.Image;
+import ui.ImageViewer;
+import model.Image;
 
 public class ConsoleImageViewer implements ImageViewer {
 

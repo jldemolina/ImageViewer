@@ -1,6 +1,6 @@
-package imageviewer.persistence;
+package persistence;
 
-import imageviewer.model.Image;
+import model.Image;
 
 public interface ImageLoader {
     

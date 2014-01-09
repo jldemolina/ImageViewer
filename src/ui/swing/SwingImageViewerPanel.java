@@ -1,7 +1,7 @@
-package imageviewer.ui.swing;
+package ui.swing;
 
-import imageviewer.model.Image;
-import imageviewer.ui.ImageViewer;
+import model.Image;
+import ui.ImageViewer;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

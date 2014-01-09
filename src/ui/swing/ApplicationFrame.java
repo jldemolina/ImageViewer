@@ -1,4 +1,4 @@
-package imageviewer.ui.swing;
+package ui.swing;
 
 import javax.swing.*;
 import java.awt.*;
